@@ -32,6 +32,11 @@ void CoinGame() {
 
     printf("Heads: %d, Tails: %d\n", HeadsCount, TailsCount);
 
+    if (HeadsCount > TailsCount) {
+        printf("You won!\n");
+    } else {
+        printf("You lost!\n");
+    }
 }
 
 int main() {
