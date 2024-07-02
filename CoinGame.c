@@ -1,16 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
-void AskName() {
-    char name[20];
+char* AskName() {
+    char *name = malloc(20 * sizeof(char));
+    if (name == NULL) {
+        printf("Memory allocation failed\n");
+        exit(1);
+    }
     printf("Who are you?\n");
-    scanf("%s", name);
+    scanf("%19s", name);
     printf("Hello, %s!\n", name);
 
+    return name;
 }
 
-void CoinGame() {
+void CoinGame(char *name) {
     int round = 1;
     int MaxRound = 3;
     int HeadsCount = 0;
@@ -33,14 +39,18 @@ void CoinGame() {
     printf("Heads: %d, Tails: %d\n", HeadsCount, TailsCount);
 
     if (HeadsCount > TailsCount) {
-        printf("You won!\n");
+        printf("%s won!\n", name);
     } else {
-        printf("You lost!\n");
+        printf("%s You lost!\n", name);
     }
 }
 
 int main() {
-    AskName();
-    CoinGame();
+    srand(time(NULL));
+
+    char *name = AskName();
+    CoinGame(name);
+
+    free(name);
     return 0;
 }
