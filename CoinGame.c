@@ -2,6 +2,14 @@
 #include <stdlib.h>
 #include <time.h>
 
+void AskName() {
+    char name[20];
+    printf("Who are you?\n");
+    scanf("%s", name);
+    printf("Hello, %s!\n", name);
+
+}
+
 void CoinGame() {
     int round = 1;
     int MaxRound = 3;
@@ -27,6 +35,7 @@ void CoinGame() {
 }
 
 int main() {
+    AskName();
     CoinGame();
     return 0;
 }
